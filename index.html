@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>General Weighted Average</title>
+	<style>
+		body {
+			font-family: Arial;
+			background-color: #f1f1f1;
+			padding: 20px;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 2px;
+			color: #333;
+		}
+		form {
+			background-color: #fff;
+			border-radius: 5px;
+			padding: 15px;
+			margin-left: 150px;
+			margin-right: 150px;
+			box-shadow: 0px 0px 5px #ccc;
+		}
+		input[type="number"] {
+			padding: 5px;
+			border: 10px;
+			margin-bottom: 10px;
+			width: 97%;
+		}
+		input[type="submit"] {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			cursor: pointer;
+			width: 100%;
+		}
+		input[type="submit"]:hover {
+			background-color: #555;
+		}
+	</style>
+</head>
+<body>
+	<h1>General Weighted Average Calculator</h1>
+	<form>
+		<label for="Mathematics">Mathematics:</label>
+		<input type="number" id="sub1" name="Math" required>
+
+	<label for="Science">Science:</label>
+	<input type="number" id="sub2" name="Science" required>
+
+	<label for="English">English:</label>
+	<input type="number" id="sub3" name="English" required>
+
+	<label for="Filipino">Filipino:</label>
+	<input type="number" id="sub4" name="Filipino" required>
+
+	<label for="Art">Art:</label>
+	<input type="number" id="sub5" name="Art" required>
+
+	<label for="Music">Music:</label>
+	<input type="number" id="sub6" name="Music" required>
+
+	<label for="PE">PE:</label>
+	<input type="number" id="sub7" name="PE" required>
+
+	<input type="button" value="Calculate" onclick="calculateGWA()">
+</form>
+
+<br><div id="result"></div>
+
+<script>
+	function calculateGWA() {
+		// Get the values of the input fields
+		var Mathematics = parseFloat(document.getElementById("sub1").value);
+		var Science = parseFloat(document.getElementById("sub2").value);
+		var English = parseFloat(document.getElementById("sub3").value);
+		var Filipino = parseFloat(document.getElementById("sub4").value);
+		var Art = parseFloat(document.getElementById("sub5").value);
+		var Music = parseFloat(document.getElementById("sub6").value);
+		var PE = parseFloat(document.getElementById("sub7").value);
+
+	  var total = Mathematics + Science + English + Filipino + Art + Music + PE;
+	  var weightedAverage = total / 7;
+
+		var descriptor_remarks = "";
+		if (weightedAverage < 75) {
+		  descriptor_remarks = "DID NOT MEET EXPECTATIONS — FAILED";
+		} else if (weightedAverage >= 75 && weightedAverage <= 79) {
+		  descriptor_remarks = "FAIRLY SATISFACTORY — PASSED";
+		} else if (weightedAverage >= 80 && weightedAverage <= 84) {
+		  descriptor_remarks = "SATISFACTORY — PASSED";
+		} else if (weightedAverage >= 85 && weightedAverage < 90) {
+		  descriptor_remarks = "VERY SATISFACTORY — PASSED";
+		} else if (weightedAverage >= 90 && weightedAverage <= 100) {
+		  descriptor_remarks = "OUTSTANDING — PASSED";
+		} else {
+		  descriptor_remarks = "DOES NOT EXIST";
+		}
+
+	  document.getElementById('result').innerHTML = "GWA: " + weightedAverage.toFixed(2) + "<br>" + descriptor_remarks;
+	}
+	</script>
+</body>
+</html>
